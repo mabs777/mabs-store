@@ -1,0 +1,6 @@
+{
+  "name": "Dark Mode Login Interface",
+  "description": "A modern, responsive dark-mode login page interface with rich interactivity, validation, and exportable clean HTML5 & CSS3 code.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
