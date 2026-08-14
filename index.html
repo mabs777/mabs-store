@@ -3,244 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Store - Daily Utilities & Automation</title>
+    <title>Mabs Store - Apps & Tools</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #f8f9fa; color: #202124; padding: 15px; }
+        
+        .search-bar { background: #edf2f7; padding: 12px 20px; border-radius: 25px; color: #5f6368; font-size: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        
+        .nav-tabs { display: flex; gap: 20px; border-bottom: 1px solid #e0e0e0; padding-bottom: 10px; margin-bottom: 20px; font-weight: 500; font-size: 14px; }
+        .tab.active { color: #01875f; border-bottom: 3px solid #01875f; padding-bottom: 8px; font-weight: 600; }
+        .tab { color: #5f6368; }
 
-        body {
-            background-color: #f8f9fa;
-            color: #202124;
-            padding-bottom: 20px;
-        }
+        .banner { background: #004d40; color: white; padding: 20px; border-radius: 16px; margin-bottom: 25px; }
+        .banner h2 { font-size: 20px; margin-bottom: 8px; }
+        .banner p { font-size: 13px; opacity: 0.9; }
 
-        /* Header Navigation */
-        header {
-            background-color: #ffffff;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        .section-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #202124; }
 
-        .search-bar {
-            background-color: #f1f3f4;
-            border-radius: 24px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+        .app-card { background: white; border-radius: 16px; padding: 15px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .app-info { display: flex; align-items: center; gap: 15px; }
+        .app-icon { width: 55px; height: 55px; border-radius: 12px; object-fit: cover; }
+        .app-details h4 { font-size: 15px; margin-bottom: 4px; color: #202124; }
+        .app-details p { font-size: 12px; color: #5f6368; margin-bottom: 4px; }
+        .app-meta { font-size: 11px; color: #5f6368; }
 
-        .search-bar input {
-            border: none;
-            background: transparent;
-            outline: none;
-            margin-left: 10px;
-            width: 100%;
-            font-size: 15px;
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            justify-content: space-around;
-            background: #fff;
-            border-bottom: 1px solid #e0e0e0;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .tab {
-            padding: 12px 16px;
-            color: #5f6368;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-        }
-
-        .tab.active {
-            color: #01875f;
-            border-bottom: 3px solid #01875f;
-        }
-
-        /* Container */
-        .container {
-            padding: 16px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Banner Card */
-        .banner {
-            background: linear-gradient(135deg, #005c3e, #01875f);
-            color: white;
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(1, 135, 95, 0.2);
-        }
-
-        .banner h2 {
-            font-size: 20px;
-            margin-bottom: 6px;
-        }
-
-        .banner p {
-            font-size: 13px;
-            opacity: 0.9;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 14px;
-            color: #202124;
-        }
-
-        /* App Items */
-        .app-card {
-            background: white;
-            border-radius: 16px;
-            padding: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-        }
-
-        .app-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .app-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 24px;
-            color: white;
-        }
-
-        .app-details h3 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .app-details p {
-            font-size: 12px;
-            color: #5f6368;
-            margin-bottom: 4px;
-        }
-
-        .app-meta {
-            font-size: 11px;
-            color: #01875f;
-            font-weight: 600;
-        }
-
-        .btn-install {
-            background-color: #e6f4ea;
-            color: #01875f;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-
-        .btn-install:hover {
-            background-color: #01875f;
-            color: white;
-        }
+        .install-btn { background: #e8f5e9; color: #01875f; text-decoration: none; padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: 13px; transition: 0.2s; }
+        .install-btn:active { background: #c8e6c9; }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="search-bar">
-            🔍 <input type="text" placeholder="Search apps & tools...">
-        </div>
-    </header>
+    <!-- Search Bar -->
+    <div class="search-bar">
+        🔍 Search apps & tools...
+    </div>
 
     <!-- Navigation Tabs -->
-    <div class="tabs">
-        <div class="tab active">For you</div>
-        <div class="tab">Top charts</div>
-        <div class="tab">Categories</div>
+    <div class="nav-tabs">
+        <span class="tab active">For you</span>
+        <span class="tab">Top charts</span>
+        <span class="tab">Categories</span>
     </div>
 
-    <div class="container">
-        <!-- Main Banner -->
-        <div class="banner">
-            <h2>Recommended Tools</h2>
-            <p>Download powerful automation & daily utility apps.</p>
-        </div>
-
-        <div class="section-title">Suggested for you</div>
-
-        <!-- App 1: TikTok Automation -->
-        <div class="app-card">
-            <div class="app-info">
-                <div class="app-icon" style="background: linear-gradient(45deg, #00f2fe, #4facfe);">🎵</div>
-                <div class="app-details">
-                    <h3>TikTok Automation</h3>
-                    <p>Social • Tools</p>
-                    <div class="app-meta">4.8 ★ | 15 MB</div>
-                </div>
-            </div>
-            <button class="btn-install">INSTALL</button>
-        </div>
-
-        <!-- App 2: YouTube Manager -->
-        <div class="app-card">
-            <div class="app-info">
-                <div class="app-icon" style="background: linear-gradient(45deg, #ff0844, #ffb199);">▶️</div>
-                <div class="app-details">
-                    <h3>YouTube Manager</h3>
-                    <p>Video • Automation</p>
-                    <div class="app-meta">4.9 ★ | 22 MB</div>
-                </div>
-            </div>
-            <button class="btn-install">INSTALL</button>
-        </div>
-
-        <!-- App 3: Utility Booster -->
-        <div class="app-card">
-            <div class="app-info">
-                <div class="app-icon" style="background: linear-gradient(45deg, #f83600, #fe8c00);">⚙️</div>
-                <div class="app-details">
-                    <h3>Utility Booster</h3>
-                    <p>Tools • Helper</p>
-                    <div class="app-meta">4.6 ★ | 8 MB</div>
-                </div>
-            </div>
-            <button class="btn-install">INSTALL</button>
-        </div>
+    <!-- Top Banner -->
+    <div class="banner">
+        <h2>Recommended Tools</h2>
+        <p>Download powerful unlocked & daily utility apps.</p>
     </div>
 
-    <!-- Adsterra Popunder Ad Script -->
-    <script src="https://pl30835074.effectivecpmnetwork.com/6c/8c/b9/6c8cb9a92a5107fb76495fa914468604.js"></script>
+    <div class="section-title">Suggested for you</div>
+
+    <!-- App 1: CapCut Pro -->
+    <div class="app-card">
+        <div class="app-info">
+            <img src="https://lh3.googleusercontent.com/proxy/4s3jR_8J-8M5S3pP2B4z6T3wK4uI6xO3Q1S6rY2Z=s120" class="app-icon" alt="CapCut" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3074/3074767.png'">
+            <div class="app-details">
+                <h4>CapCut Pro Mod</h4>
+                <p>Video • Editor</p>
+                <div class="app-meta">4.8 ★ | 85 MB</div>
+            </div>
+        </div>
+        <a href="https://www.mediafire.com/file/fh277vehp4p5ktt/Capcut_lastest_version_Moded_%2528All_Issu_Fixed%2529.apk/file" class="install-btn" target="_blank">INSTALL</a>
+    </div>
+
+    <!-- App 2: Canva Pro -->
+    <div class="app-card">
+        <div class="app-info">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968841.png" class="app-icon" alt="Canva">
+            <div class="app-details">
+                <h4>Canva Pro Team</h4>
+                <p>Design • Graphic</p>
+                <div class="app-meta">4.9 ★ | Pro Team</div>
+            </div>
+        </div>
+        <a href="https://www.canva.com/brand/join?token=4TqeDiFqpNe_X0oUXmTkZw&referrer=team-invite" class="install-btn" target="_blank">INSTALL</a>
+    </div>
 
 </body>
 </html>
