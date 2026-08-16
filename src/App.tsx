@@ -14,7 +14,7 @@ import {
   Check,
   AlertCircle
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { AppItem } from './types';
 import { INITIAL_APPS, DEFAULT_CATEGORIES } from './data/defaultApps';
 import { getStoredCustomApps, saveCustomApp, deleteStoredApp, updateStoredApp } from './utils/storage';
