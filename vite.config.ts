@@ -4,7 +4,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  // GitHub Pages subfolder deployment path
+  // GitHub Pages subfolder base path
   base: '/mabs-store/',
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -13,7 +13,6 @@ export default defineConfig({
     },
   },
   server: {
-    // HMR is disabled in AI Studio via DISABLE_HMR env var.
     hmr: process.env.DISABLE_HMR !== 'true',
     watch: process.env.DISABLE_HMR === 'true' ? null : {},
   },
