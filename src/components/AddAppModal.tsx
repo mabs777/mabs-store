@@ -15,7 +15,7 @@ import {
   Check, 
   AlertCircle 
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { AppItem, NewAppFormData } from '../types';
 import { DEFAULT_CATEGORIES } from '../data/defaultApps';
 
@@ -495,3 +495,4 @@ export const AddAppModal: React.FC<AddAppModalProps> = ({
     </AnimatePresence>
   );
 };
+              
