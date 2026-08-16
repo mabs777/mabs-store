@@ -10,7 +10,7 @@ import {
   CheckCircle2, 
   AlertCircle 
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { AppItem } from '../types';
 
 interface AppCardProps {
