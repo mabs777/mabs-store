@@ -1,18 +1,42 @@
-export interface LoginFormData {
-  identifier: string;
-  password: string;
-  rememberMe: boolean;
-}
-
-export interface FormErrors {
-  identifier?: string;
-  password?: string;
-  general?: string;
-}
-
-export interface UserSession {
-  email: string;
+export interface AppItem {
+  id: string;
   name: string;
-  loginTime: string;
-  rememberMe: boolean;
+  developer: string;
+  shortDescription: string;
+  fullDescription?: string;
+  version: string;
+  category: string;
+  iconUrl?: string;
+  screenshotUrls?: string[];
+  apkDownloadUrl?: string;
+  appSize?: string;
+  releaseDate?: string;
+  rating?: number;
+  downloads?: string;
+  isCustom?: boolean;
+  createdAt?: string;
 }
+
+export interface NewAppFormData {
+  name: string;
+  developer: string;
+  shortDescription: string;
+  fullDescription: string;
+  version: string;
+  category: string;
+  iconUrl: string;
+  screenshotUrls: string;
+  apkDownloadUrl: string;
+  appSize: string;
+  releaseDate: string;
+}
+
+export type CategoryType = 
+  | 'All'
+  | 'Biography & History'
+  | 'Tools'
+  | 'Productivity'
+  | 'Media'
+  | 'Utilities'
+  | 'Games'
+  | string;
