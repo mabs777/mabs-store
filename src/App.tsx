@@ -14,7 +14,6 @@ import {
   Check,
   AlertCircle
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { AppItem } from './types';
 import { INITIAL_APPS, DEFAULT_CATEGORIES } from './data/defaultApps';
 import { getStoredCustomApps, saveCustomApp, deleteStoredApp, updateStoredApp } from './utils/storage';
@@ -175,34 +174,27 @@ export default function App() {
       />
 
       {/* Success / Feedback Toast Notification */}
-      <AnimatePresence>
-        {toastMessage && (
-          <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="fixed top-20 right-4 sm:right-6 z-50 max-w-sm w-full bg-zinc-900 border border-zinc-700/80 rounded-2xl p-4 shadow-2xl shadow-black/80 flex items-start gap-3"
+      {toastMessage && (
+        <div className="fixed top-20 right-4 sm:right-6 z-50 max-w-sm w-full bg-zinc-900 border border-zinc-700/80 rounded-2xl p-4 shadow-2xl shadow-black/80 flex items-start gap-3 transition-all animate-in fade-in slide-in-from-top-4 duration-200">
+          <div className={`p-2 rounded-xl shrink-0 ${
+            toastMessage.type === 'success' 
+              ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+              : 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
+          }`}>
+            {toastMessage.type === 'success' ? <Check className="w-4 h-4" /> : <Info className="w-4 h-4" />}
+          </div>
+          <div className="flex-1 min-w-0">
+            <h4 className="text-xs font-bold text-zinc-100">{toastMessage.title}</h4>
+            <p className="text-[11px] text-zinc-400 mt-0.5 leading-relaxed">{toastMessage.desc}</p>
+          </div>
+          <button
+            onClick={() => setToastMessage(null)}
+            className="text-zinc-500 hover:text-zinc-300 text-xs p-1"
           >
-            <div className={`p-2 rounded-xl shrink-0 ${
-              toastMessage.type === 'success' 
-                ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
-                : 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
-            }`}>
-              {toastMessage.type === 'success' ? <Check className="w-4 h-4" /> : <Info className="w-4 h-4" />}
-            </div>
-            <div className="flex-1 min-w-0">
-              <h4 className="text-xs font-bold text-zinc-100">{toastMessage.title}</h4>
-              <p className="text-[11px] text-zinc-400 mt-0.5 leading-relaxed">{toastMessage.desc}</p>
-            </div>
-            <button
-              onClick={() => setToastMessage(null)}
-              className="text-zinc-500 hover:text-zinc-300 text-xs p-1"
-            >
-              &times;
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            &times;
+          </button>
+        </div>
+      )}
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col gap-6">
